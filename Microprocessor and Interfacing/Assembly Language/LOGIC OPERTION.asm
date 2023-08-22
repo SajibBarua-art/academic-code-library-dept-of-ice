@@ -1,0 +1,30 @@
+;GENEREL LOGIC OPERATION
+
+.MODEL SMALL
+.STACK 100H
+.DATA
+M1 DB "AND:$",0AH,0DH
+M2 DB "OR:$",0AH,0DH
+M3 DB "XOR:$",0AH,0DH
+.CODE
+MAIN PROC
+    MOV AX,@DATA
+    MOV DS,AX
+    
+    MOV AH,9
+    LEA DX,M1
+    INT 21H
+    
+    MOV BL,02H
+    MOV CL,03H
+    
+    AND BL,CL
+    MOV AH,2
+    MOV DL,BL
+    INT 21H
+    
+    MOV AH,4CH
+    INT 21H
+    
+    MAIN ENDP
+END MAIN
